@@ -1,0 +1,32 @@
+---
+title: "Q4"
+output: pdf_document
+date: "2024-02-13"
+---
+```{r}
+library(testthat)
+
+# Assuming we have a dataset like this:
+german_cities <- c("Berlin", "Hamburg", "Munich", "Cologne", "Frankfurt", "Rostock")
+
+# Test that german_cities contains all the specified cities
+test_that("german_cities contains all the specific cities", {
+  expected_cities <- c("Berlin", "Hamburg", "Munich", "Cologne", "Frankfurt", "Rostock")
+  expect_setequal(german_cities, expected_cities)
+})
+
+# Test that german_cities contains only the specified cities
+test_that("german_cities contains only the specific cities", {
+  all_cities <- unique(german_cities)
+  expected_cities <- c("Berlin", "Hamburg", "Munich", "Cologne", "Frankfurt", "Rostock")
+  expect_equal(length(all_cities), length(expected_cities))
+  expect_setequal(all_cities, expected_cities)
+})
+
+# Test that german_cities does not contain any NA values
+test_that("german_cities does not contain NA values", {
+  expect_false(any(is.na(german_cities)))
+})
+```
+
+
